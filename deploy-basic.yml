@@ -1,0 +1,25 @@
+apiVersion: kappctrl.k14s.io/v1alpha1
+kind: App
+metadata:
+  name: collection-of-sample-apps
+  namespace: tap-install-gitops
+  annotations:
+    kapp.k14s.io/change-group: tap-install-gitops/app
+    kapp.k14s.io/change-rule.1: "upsert after upserting tap-install-gitops/rbac"
+spec:
+  serviceAccountName: tap-install-gitops-sa
+  syncPeriod: 1m
+  fetch:
+  - git:
+      url: git@github.com:pacphi/tap-sample-apps
+      ref: origin/main
+      secretRef:
+        name: git-ssh-for-carvel
+  template:
+  - ytt:
+      paths:
+      - basic
+      valuesFrom:
+      - path: values.yml
+  deploy:
+  - kapp: {}
