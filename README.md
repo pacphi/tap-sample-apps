@@ -24,8 +24,8 @@ kapp deploy --app {app-name} --file <(ytt --file schema.yml --data-value namespa
 Samples
 
 ```bash
-kapp deploy --app basic-java-app --file <(ytt --file schema.yml --data-value namespace=workloads --file basic/java-sample.yml) --diff-changes --yes
-kapp deploy --app tested-java-app --file <(ytt --file schema.yml --data-value namespace=workloads --file with-tests/java-maven-sample.yml) --diff-changes --yes
+kapp deploy --app basic-java-app --file <(ytt --data-value namespace=workloads --file basic/java-sample.yml) --diff-changes --yes
+kapp deploy --app tested-java-app --file <(ytt --data-value namespace=workloads --file with-tests/java-maven-sample.yml) --diff-changes --yes
 ```
 
 ### All-at-once
