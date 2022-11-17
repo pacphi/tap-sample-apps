@@ -1,0 +1,21 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: crypto-screener
+  name: crypto-screener
+  namespace: #@ data.values.namespace
+spec:
+  params:
+  - name: gitops_repository
+    value: ssh://git@github.com/pacphi/CryptoCurrency-Screener.git
+  - name: gitops_ssh_secret
+    value: git-ssh
+  source:
+    git:
+      url: ssh://git@github.com/pacphi/CryptoCurrency-Screener.git
+      ref:
+        branch: main
