@@ -10,6 +10,10 @@ metadata:
   name: tetris
   namespace: #@ data.values.namespace
 spec:
+  build:
+    env:
+      BP_DOTNET_PROJECT_PATH: "./SampleApp"
+      #! BP_DOTNET_PUBLISH_FLAGS: "--verbosity=normal --self-contained=true"
   source:
     git:
       url: https://github.com/aboudoux/TetrisBlazor
