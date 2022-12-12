@@ -19,7 +19,7 @@ You may opt to deploy and delete these samples one-by-one or all-at-once.
 To deploy
 
 ```bash
-kapp deploy --app {app-name} --file <(ytt -data-value namespace={namespace} --file {path-to-file}) --diff-changes --yes
+kapp deploy --app {app-name} --file <(ytt --data-value namespace={namespace} --file {path-to-file}) --diff-changes --yes
 ```
 
 > Replace `{app-name}`, `{namespace}`, and `{path-to-file}` place-holders above as appropriate

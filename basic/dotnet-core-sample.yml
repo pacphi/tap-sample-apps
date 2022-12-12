@@ -12,8 +12,10 @@ metadata:
 spec:
   build:
     env:
-      BP_DOTNET_PROJECT_PATH: "./SampleApp"
-      #! BP_DOTNET_PUBLISH_FLAGS: "--verbosity=normal --self-contained=true"
+      - name: BP_DOTNET_PROJECT_PATH
+        value: "./SampleApp"
+      - name: BP_DOTNET_PUBLISH_FLAGS
+        value: "--verbosity=normal --self-contained=true"
   source:
     git:
       url: https://github.com/aboudoux/TetrisBlazor
