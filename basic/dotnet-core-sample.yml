@@ -1,0 +1,23 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: tetris
+    tanzu.app.live.view: "true"
+  name: tetris
+  namespace: #@ data.values.namespace
+spec:
+  build:
+    env:
+      - name: BP_DOTNET_PROJECT_PATH
+        value: "./SampleApp"
+      - name: BP_DOTNET_PUBLISH_FLAGS
+        value: "--verbosity=normal --self-contained=true"
+  source:
+    git:
+      url: https://github.com/aboudoux/TetrisBlazor
+      ref:
+        branch: master
