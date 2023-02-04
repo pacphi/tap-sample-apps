@@ -50,7 +50,7 @@ namespace: {namespace}
 EOF
 
 kapp deploy --app basic-apps --file deploy-basic.yml --diff-changes --yes
-kapp deploy --app tested-apps --file deploy-with-tests --diff-changes --yes
+kapp deploy --app tested-apps --file deploy-with-tests.yml --diff-changes --yes
 ```
 
 > Replace `{namespace}` place-holder above as appropriate.  Namespace must already exist in cluster.  Also known as a "developer namespace".
