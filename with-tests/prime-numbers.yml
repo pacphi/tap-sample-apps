@@ -1,0 +1,24 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/has-tests: "true"
+    app.kubernetes.io/part-of: prime-numbers
+    tanzu.app.live.view: "true"
+  name: prime-numbers
+  namespace: #@ data.values.namespace
+spec:
+  params:
+  - name: testing_pipeline_matching_labels
+    value:
+      apps.tanzu.vmware.com/pipeline: test
+      apps.tanzu.vmware.com/language: java
+      apps.tanzu.vmware.com/build-engine: gradle
+  source:
+    git:
+      url: https://github.com/fastnsilver/primes
+      ref:
+        branch: solution
