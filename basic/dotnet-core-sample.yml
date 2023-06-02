@@ -5,19 +5,19 @@ kind: Workload
 metadata:
   labels:
     apps.tanzu.vmware.com/workload-type: web
-    app.kubernetes.io/part-of: tetris
+    app.kubernetes.io/part-of: pacman
     tanzu.app.live.view: "true"
-  name: tetris
+  name: pacman
   namespace: #@ data.values.namespace
 spec:
   build:
     env:
       - name: BP_DOTNET_PROJECT_PATH
-        value: "./SampleApp"
+        value: "./src/PacMan"
       - name: BP_DOTNET_PUBLISH_FLAGS
         value: "--verbosity=normal --self-contained=true"
   source:
     git:
-      url: https://github.com/aboudoux/TetrisBlazor
+      url: https://github.com/pacphi/PacManBlazor
       ref:
         branch: master
