@@ -21,6 +21,8 @@ spec:
       apps.tanzu.vmware.com/pipeline: test
       apps.tanzu.vmware.com/language: java
       apps.tanzu.vmware.com/build-engine: gradle
+  - name: clusterBuilder
+    value: full-jammy
   source:
     git:
       url: https://github.com/fastnsilver/primes

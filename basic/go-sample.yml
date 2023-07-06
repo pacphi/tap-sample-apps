@@ -1,0 +1,20 @@
+#@ load("@ytt:data", "data")
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: go-app
+    tanzu.app.live.view: "true"
+  name: go-app
+  namespace: #@ data.values.namespace
+spec:
+  params:
+  - name: clusterBuilder
+    value: tiny-jammy
+  source:
+    git:
+      ref:
+        branch: master
+      url: https://github.com/pacphi/helloworld
